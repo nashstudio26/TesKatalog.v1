@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>My Donuts — Mobile Catalog & Order</title>
+    <title>INDS DOUGH — Mobile Catalog & Order</title>
     <!-- Google Fonts: Plus Jakarta Sans & Space Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,14 +57,19 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: contain;
+        }
+
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
         .app-viewport {
@@ -82,23 +87,22 @@
         .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-mono { font-family: 'Space Mono', monospace; }
 
-        /* HEADER */
+        /* HEADER - High Performance Scroll Optimizations */
         .app-header {
             position: sticky;
             top: 0;
             z-index: 50;
-            background-color: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(247, 245, 240, 0.96);
             border-bottom: 1px solid var(--border);
             padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transform: translateZ(0);
         }
 
         [data-theme="dark"] .app-header {
-            background-color: rgba(15, 14, 16, 0.92);
+            background-color: rgba(15, 14, 16, 0.96);
         }
 
         .brand-pill {
@@ -193,7 +197,7 @@
             transform: scale(1);
         }
 
-        /* HERO SECTION - COMPACT & IMPACTFUL */
+        /* HERO SECTION - REFINED HIERARCHY & SLEEK OPEN BADGE */
         .store-hero {
             padding: 12px 16px 6px;
         }
@@ -202,47 +206,115 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 12px 14px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
             box-shadow: var(--shadow-sm);
         }
 
-        .hero-main-info {
+        .hero-header-row {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .hero-tagline-text {
-            font-size: 0.82rem;
+        .hero-catalog-title {
+            font-size: 1.55rem;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.35;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.6px;
+            line-height: 1.1;
         }
 
-        .status-pill {
-            display: inline-flex;
+        .hero-meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .hero-meta-item {
+            display: flex;
             align-items: center;
-            gap: 5px;
-            background: var(--brand-accent-light);
+            gap: 7px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .hero-meta-item i {
+            width: 14px;
+            height: 14px;
             color: var(--brand-accent);
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 4px 8px;
-            border-radius: 20px;
-            white-space: nowrap;
             flex-shrink: 0;
         }
 
+        /* Sleek "Buka" Status Indicator */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(22, 163, 74, 0.1);
+            color: #16A34A;
+            border: 1px solid rgba(22, 163, 74, 0.25);
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        [data-theme="dark"] .status-pill {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ADE80;
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
         .status-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            background: var(--brand-accent);
+            background: #16A34A;
+            box-shadow: 0 0 8px rgba(22, 163, 74, 0.6);
+            position: relative;
+        }
+
+        [data-theme="dark"] .status-dot {
+            background: #4ADE80;
+            box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+        }
+
+        /* Distinct "Daftar Menu" Anchor Badge */
+        .catalog-section-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .catalog-label-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            color: var(--brand-accent);
+            text-transform: uppercase;
+        }
+
+        .catalog-label-title i {
+            width: 14px;
+            height: 14px;
         }
 
         .hero-quick-meta {
@@ -250,8 +322,6 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
-            padding-top: 8px;
-            border-top: 1px dashed var(--border);
             font-size: 0.72rem;
             color: var(--text-muted);
             font-weight: 600;
@@ -280,6 +350,7 @@
             flex-direction: column;
             gap: 8px;
             border-bottom: 1px solid var(--border);
+            transform: translateZ(0);
         }
 
         /* FIXED SEARCH BOX LAYOUT */
@@ -365,6 +436,7 @@
             gap: 12px;
         }
 
+        /* Product Card Rendering Optimization for Smooth Scrolling */
         .p-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -374,6 +446,9 @@
             flex-direction: column;
             box-shadow: var(--shadow-sm);
             position: relative;
+            contain: content;
+            content-visibility: auto;
+            contain-intrinsic-size: 0 240px;
         }
 
         .p-img-wrap {
@@ -395,7 +470,6 @@
             position: absolute;
             top: 6px; left: 6px;
             background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
             color: #FFF;
             font-size: 0.62rem;
             font-weight: 700;
@@ -504,7 +578,7 @@
             position: fixed;
             bottom: 16px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
+            transform: translateX(-50%) translateY(100px) translateZ(0);
             width: calc(100% - 32px);
             max-width: 448px;
             background: var(--brand-primary);
@@ -516,11 +590,12 @@
             justify-content: space-between;
             box-shadow: var(--shadow-float);
             z-index: 80;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .floating-order-bar.visible {
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0) translateZ(0);
         }
 
         .bar-left {
@@ -574,11 +649,10 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(4px);
             z-index: 100;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.2s ease;
         }
 
         .drawer-backdrop.active {
@@ -590,7 +664,7 @@
             position: fixed;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%) translateY(100%);
+            transform: translateX(-50%) translateY(100%) translateZ(0);
             width: 100%;
             max-width: 480px;
             max-height: 88vh;
@@ -600,12 +674,12 @@
             z-index: 101;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
         }
 
         .bottom-sheet.active {
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0) translateZ(0);
         }
 
         .sheet-handle-bar {
@@ -762,7 +836,6 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
             z-index: 200;
             display: flex;
             align-items: center;
@@ -770,7 +843,7 @@
             padding: 16px;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.2s ease;
         }
 
         .invoice-modal-backdrop.active {
@@ -780,18 +853,18 @@
 
         .receipt-card {
             width: 100%;
-            max-width: 400px;
-            max-height: 90vh;
+            max-width: 420px;
+            max-height: 88vh;
             background: var(--invoice-bg);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            box-shadow: var(--shadow-float);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             position: relative;
-            transform: scale(0.92);
-            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.95);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .invoice-modal-backdrop.active .receipt-card {
@@ -799,10 +872,11 @@
         }
 
         .receipt-header {
-            padding: 20px 20px 14px;
+            padding: 18px 20px 14px;
             text-align: center;
             border-bottom: 2px dashed var(--border);
             position: relative;
+            background: var(--bg-card);
         }
 
         .receipt-close-btn {
@@ -822,17 +896,26 @@
         }
 
         .receipt-brand-name {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.4px;
+        }
+
+        .receipt-store-sub {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 600;
         }
 
         .receipt-status-badge {
-            display: inline-block;
-            margin-top: 6px;
-            padding: 3px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            padding: 4px 10px;
             border-radius: 12px;
-            background: rgba(194, 94, 0, 0.12);
+            background: rgba(217, 107, 0, 0.12);
             color: var(--brand-accent);
             font-size: 0.66rem;
             font-weight: 800;
@@ -850,16 +933,34 @@
 
         .receipt-meta-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 12px;
             font-size: 0.72rem;
             background: var(--bg-surface);
-            padding: 10px 12px;
-            border-radius: 10px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
-        .meta-lbl { color: var(--text-muted); font-weight: 600; }
-        .meta-val { font-weight: 700; color: var(--text-main); text-align: right; }
+        .meta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .meta-lbl { 
+            color: var(--text-muted); 
+            font-weight: 700; 
+            font-size: 0.64rem; 
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .meta-val { 
+            font-weight: 700; 
+            color: var(--text-main); 
+            word-break: break-word;
+        }
 
         .receipt-items-table {
             width: 100%;
@@ -872,30 +973,40 @@
             padding-bottom: 8px;
             border-bottom: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
 
         .receipt-items-table td {
-            padding: 8px 0;
+            padding: 9px 0;
             border-bottom: 1px dashed var(--border);
             vertical-align: top;
         }
 
         .item-note-sub {
             font-size: 0.68rem;
-            color: var(--text-muted);
-            font-style: italic;
+            color: var(--brand-accent);
+            font-weight: 600;
             display: block;
+            margin-top: 2px;
+        }
+
+        .receipt-summary-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-top: 1px dashed var(--border);
+            padding-top: 10px;
         }
 
         .receipt-footer-actions {
-            padding: 16px 20px;
+            padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
             border-top: 2px dashed var(--border);
             background: var(--bg-card);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-send-wa {
@@ -938,8 +1049,8 @@
                     </svg>
                 </div>
                 <div class="brand-title-wrap">
-                    <h1 class="font-sans">My Donuts</h1>
-                    <p>Artisanal Bakery</p>
+                    <h1 class="font-sans">INDS DOUGH</h1>
+                    <p>Premium Donuts</p>
                 </div>
             </a>
             <div class="nav-tools">
@@ -955,21 +1066,20 @@
 
         <section class="store-hero">
             <div class="hero-card">
-                <div class="hero-main-info">
-                    <div class="hero-tagline-text" id="storeTagline">
-                        Donat Premium Soft & Fresh Daily • No Bantet, No Seret!
-                    </div>
+                <div class="hero-header-row">
+                    <h2 class="hero-catalog-title">Daftar Menu</h2>
                     <div class="status-pill">
                         <span class="status-dot"></span>
                         <span>Buka</span>
                     </div>
                 </div>
-                <div class="hero-quick-meta">
-                    <div class="meta-item">
+
+                <div class="hero-meta-list">
+                    <div class="hero-meta-item">
                         <i data-lucide="map-pin"></i>
-                        <span id="storeAddr">Jl. Basuki Rahmat (depan pom bensin)</span>
+                        <span id="storeAddr">Jl. Basuki Rahmat (Depan Pom Bensin)</span>
                     </div>
-                    <div class="meta-item">
+                    <div class="hero-meta-item">
                         <i data-lucide="instagram"></i>
                         <span id="storeIg">@inds.dough</span>
                     </div>
@@ -1057,35 +1167,38 @@
                     <button class="receipt-close-btn" id="btnCloseInvoice">
                         <i data-lucide="x" style="width:14px;height:14px;"></i>
                     </button>
-                    <div class="receipt-brand-name font-syne">My Donuts</div>
-                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-top:2px;">Katalog Digital & Order Sheet</div>
-                    <span class="receipt-status-badge">Menunggu Konfirmasi WA</span>
+                    <div class="receipt-brand-name font-sans">INDS DOUGH</div>
+                    <div class="receipt-store-sub">Jl. Basuki Rahmat (Depan Pom Bensin) • @inds.dough</div>
+                    <div class="receipt-status-badge">
+                        <i data-lucide="clock" style="width:12px;height:12px;"></i>
+                        <span>Menunggu Konfirmasi WA</span>
+                    </div>
                 </div>
 
                 <div class="receipt-body">
                     <div class="receipt-meta-grid font-mono">
-                        <div>
-                            <div class="meta-lbl">NO. INVOICE</div>
-                            <div class="meta-val" id="invNo">#MD-88291</div>
+                        <div class="meta-group">
+                            <span class="meta-lbl">NO. INVOICE</span>
+                            <span class="meta-val" id="invNo">#INDS-88291</span>
                         </div>
-                        <div>
-                            <div class="meta-lbl">TANGGAL</div>
-                            <div class="meta-val" id="invDate">16/09/2026</div>
+                        <div class="meta-group">
+                            <span class="meta-lbl">WAKTU</span>
+                            <span class="meta-val" id="invDate">16/09/2026, 16.03</span>
                         </div>
-                        <div>
-                            <div class="meta-lbl">PEMESAN</div>
-                            <div class="meta-val" id="invCust">-</div>
+                        <div class="meta-group">
+                            <span class="meta-lbl">PEMESAN</span>
+                            <span class="meta-val" id="invCust">-</span>
                         </div>
-                        <div>
-                            <div class="meta-lbl">METODE</div>
-                            <div class="meta-val">WhatsApp</div>
+                        <div class="meta-group">
+                            <span class="meta-lbl">PEMBAYARAN</span>
+                            <span class="meta-val">Transfer / Cash</span>
                         </div>
                     </div>
 
                     <table class="receipt-items-table">
                         <thead>
                             <tr>
-                                <th>Item</th>
+                                <th>Item Menu</th>
                                 <th style="text-align: center;">Qty</th>
                                 <th style="text-align: right;">Total</th>
                             </tr>
@@ -1095,7 +1208,7 @@
                         </tbody>
                     </table>
 
-                    <div style="display: flex; flex-direction: column; gap: 4px; border-top: 1px dashed var(--border); padding-top: 8px;">
+                    <div class="receipt-summary-block">
                         <div class="summary-line">
                             <span>Subtotal</span>
                             <span id="invSubtotal">Rp 0</span>
@@ -1106,8 +1219,8 @@
                         </div>
                     </div>
 
-                    <div id="invNoteBox" style="display: none; background: var(--bg-surface); padding: 8px 10px; border-radius: 8px; font-size: 0.72rem;">
-                        <span style="font-weight: 700; color: var(--text-muted);">Catatan: </span>
+                    <div id="invNoteBox" style="display: none; background: var(--bg-surface); padding: 9px 12px; border-radius: 10px; font-size: 0.73rem; border: 1px dashed var(--border);">
+                        <span style="font-weight: 700; color: var(--brand-accent);">Catatan Pengiriman: </span>
                         <span id="invNoteText" style="color: var(--text-main);"></span>
                     </div>
                 </div>
@@ -1125,11 +1238,11 @@
     <script>
         const STORE_DATA = {
             "storeInfo": {
-                "name": "My Donuts",
-                "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
+                "name": "INDS DOUGH",
+                "tagline": "Premium Donuts",
                 "whatsappNumber": "6285640366256",
                 "formattedPhone": "0856-4036-6256",
-                "address": "Jalan Basuki Rahmat (depan pom bensin)",
+                "address": "Jl. Basuki Rahmat (Depan Pom Bensin)",
                 "instagram": "@inds.dough"
             },
             "categories": [
@@ -1338,11 +1451,15 @@
             const custNote = document.getElementById('custNote').value.trim();
             const totalPrice = items.reduce((s, i) => s + (i.item.price * i.qty), 0);
 
-            const randomId = '#MD-' + Math.floor(10000 + Math.random() * 90000);
-            const today = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const randomId = '#INDS-' + Math.floor(10000 + Math.random() * 90000);
+            
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':');
+            const fullDateTime = `${dateStr}, ${timeStr} WIB`;
 
             document.getElementById('invNo').textContent = randomId;
-            document.getElementById('invDate').textContent = today;
+            document.getElementById('invDate').textContent = fullDateTime;
             document.getElementById('invCust').textContent = custName;
 
             const tbody = document.getElementById('invItemsTable');
@@ -1371,6 +1488,7 @@
             // Open Invoice Modal
             closeSheet();
             document.getElementById('invoiceBackdrop').classList.add('active');
+            lucide.createIcons();
         }
 
         function sendToWhatsApp() {
@@ -1381,10 +1499,12 @@
             const custNote = document.getElementById('custNote').value.trim();
             const totalPrice = items.reduce((s, i) => s + (i.item.price * i.qty), 0);
             const invId = document.getElementById('invNo').textContent;
+            const invTime = document.getElementById('invDate').textContent;
 
-            let text = `Halo *My Donuts*, saya mau pesan via katalog digital:\n\n`;
+            let text = `Halo *INDS DOUGH*, saya mau pesan via katalog digital:\n\n`;
             text += `🧾 *INVOICE:* ${invId}\n`;
-            if(custName) text += `👤 *Pemesan:* ${custName}\n`;
+            text += `🕒 *WAKTU:* ${invTime}\n`;
+            if(custName) text += `👤 *PEMESAN:* ${custName}\n`;
             text += `----------------------------------------\n`;
             text += `📦 *DETAIL PESANAN:*\n`;
 
