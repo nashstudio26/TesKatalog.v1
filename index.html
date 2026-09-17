@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>My Donuts — Katalog & Pemesanan Online</title>
+    <title>INDS.DOUGH — Premium Donuts Catalog</title>
     
     <!-- Plus Jakarta Sans Font Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-    <!-- HTML2Canvas for auto-downloading invoice element as image -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         :root {
@@ -79,7 +76,12 @@
             text-rendering: optimizeSpeed;
         }
 
-        /* Container Layout for Mobile Frame */
+        /* Class for locking background scroll when modal is open */
+        body.modal-open {
+            overflow: hidden !important;
+            touch-action: none !important;
+        }
+
         .app-container {
             max-width: 480px;
             margin: 0 auto;
@@ -111,23 +113,20 @@
             gap: 10px;
         }
 
-        .brand-logo {
+        .brand-logo-img {
             width: 38px;
             height: 38px;
-            border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--accent-color), #8B3205);
-            color: #FFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(200, 90, 23, 0.3);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--accent-color);
+            box-shadow: 0 3px 10px rgba(200, 90, 23, 0.25);
             flex-shrink: 0;
         }
 
         .brand-titles h1 {
             font-size: 16px;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
             color: var(--text-primary);
             letter-spacing: -0.3px;
         }
@@ -135,7 +134,7 @@
         .brand-titles span {
             font-size: 11px;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .header-actions {
@@ -211,13 +210,7 @@
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .hero-badge-title {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            gap: 10px;
         }
 
         .hero-tagline {
@@ -265,7 +258,7 @@
         }
 
         .products-title {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.3px;
@@ -341,7 +334,7 @@
 
         .product-thumb {
             width: 100%;
-            height: 96px;
+            height: 110px;
             border-radius: var(--radius-sm);
             background-color: var(--bg-surface-elevated);
             display: flex;
@@ -350,6 +343,13 @@
             position: relative;
             overflow: hidden;
             margin-bottom: 8px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
         }
 
         .product-donut-icon {
@@ -895,26 +895,10 @@
     <div class="app-container">
         <header class="header">
             <div class="brand-block">
-                <div class="brand-logo" aria-label="My Donuts Logo">
-                    <!-- SVG Aesthetic Donut Icon -->
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9.5" fill="url(#donutGrad)" stroke="#FFFFFF" stroke-width="1.2"/>
-                        <circle cx="12" cy="12" r="3.2" fill="var(--bg-main)"/>
-                        <path d="M7 10C7.5 8.5 9.5 8 12 8C14.5 8 16.5 9 17 9.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="8.5" cy="11.5" r="0.8" fill="#FFF"/>
-                        <circle cx="15.5" cy="11.5" r="0.8" fill="#FFF"/>
-                        <circle cx="12" cy="6.5" r="0.8" fill="#FFF"/>
-                        <defs>
-                            <linearGradient id="donutGrad" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#E27B38"/>
-                                <stop offset="1" stop-color="#9A3805"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
+                <img id="brand-logo-img" src="https://lh3.googleusercontent.com/d/18BoQaOrAJZKOPdCPzhF-qKcKfrZO7W3i" class="brand-logo-img" alt="INDS.DOUGH Logo" />
                 <div class="brand-titles">
-                    <h1 id="brand-name-text">My Donuts</h1>
-                    <span>Katalog & Pesan Online</span>
+                    <h1 id="brand-name-text">INDS.DOUGH</h1>
+                    <span id="brand-subtitle-text">Premium Donuts</span>
                 </div>
             </div>
             <div class="header-actions">
@@ -931,10 +915,7 @@
 
         <section class="hero-banner">
             <div class="hero-card">
-                <div class="hero-badge-title">
-                    <span class="badge-tag">Slogan Toko</span>
-                    <p class="hero-tagline" id="store-tagline">DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.</p>
-                </div>
+                <p class="hero-tagline" id="store-tagline">DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.</p>
                 <div class="hero-meta-list">
                     <div class="hero-meta-item">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -950,7 +931,7 @@
 
         <main class="products-section">
             <div class="products-header">
-                <h2 class="products-title">Daftar Menu</h2>
+                <h2 class="products-title">Price List</h2>
                 <span class="products-count" id="products-count-text">0 produk</span>
             </div>
 
@@ -1001,8 +982,8 @@
             <div class="form-group">
                 <label class="form-label" for="order-type">Metode Pemesanan</label>
                 <select id="order-type" class="form-select" onchange="toggleAddressField()">
-                    <option value="Ambil di Toko">Ambil di Toko (Takeaway)</option>
-                    <option value="Delivery / Kurir">Pengiriman (Delivery)</option>
+                    <option value="AT">Ambil di Toko (AT)</option>
+                    <option value="TA">Takeaway / Delivery (TA)</option>
                 </select>
             </div>
 
@@ -1032,8 +1013,8 @@
 
             <div class="receipt-card" id="receipt-card-element">
                 <div class="receipt-header">
-                    <div class="receipt-logo-title">MY DONUTS</div>
-                    <div class="receipt-meta" id="invoice-id-time">#MD-0000 • 16/09/2026</div>
+                    <div class="receipt-logo-title">INDS.DOUGH</div>
+                    <div class="receipt-meta" id="invoice-id-time">#AT-0001 • 16/09/2026</div>
                 </div>
 
                 <table class="receipt-table">
@@ -1071,16 +1052,18 @@
     </div>
 
     <script>
-        // Embedded Data Fallback
+        // Embedded Fallback Data
         const DEFAULT_DATA = {
             "store": {
-                "name": "My Donuts",
+                "name": "INDS.DOUGH",
+                "subtitle": "Premium Donuts",
                 "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
                 "phone": "085640366256",
                 "whatsapp_raw": "6285640366256",
                 "address": "Jl. Basuki Rahmat (depan POM bensin Pasar Sabtuan)",
                 "instagram": "@inds.dough",
-                "instagram_url": "https://instagram.com/inds.dough"
+                "instagram_url": "https://instagram.com/inds.dough",
+                "logo_url": "https://lh3.googleusercontent.com/d/18BoQaOrAJZKOPdCPzhF-qKcKfrZO7W3i"
             },
             "categories": [
                 { "id": "all", "name": "Semua Menu" },
@@ -1089,28 +1072,28 @@
                 { "id": "gurih", "name": "🧀 Donat Gurih" }
             ],
             "products": [
-                { "id": "p1", "name": "Donat Mini Isi 6", "price": 28000, "category": "paket", "badge": "Terlaris", "color": "#e07a5f", "description": "Bebas pilih varian rasa topping favoritmu." },
-                { "id": "p2", "name": "Donat Mini Isi 12", "price": 55000, "category": "paket", "badge": "Hemat", "color": "#d4a373", "description": "Isi lebih banyak, pas untuk rame-rame." },
-                { "id": "p3", "name": "Strawberry", "price": 7500, "category": "manis", "badge": null, "color": "#e63946", "description": "Selai strawberry manis segar berlimpah." },
-                { "id": "p4", "name": "Susu Vanilla", "price": 8000, "category": "manis", "badge": null, "color": "#f1faee", "description": "Glaze vanilla lembut bertabur susu manis." },
-                { "id": "p5", "name": "Caramel Cheese", "price": 8000, "category": "manis", "badge": "Favorit", "color": "#f4a261", "description": "Perpaduan karamel legit dan gurih keju." },
-                { "id": "p6", "name": "Crunchy", "price": 8000, "category": "manis", "badge": null, "color": "#6b705c", "description": "Topping coklat dengan sensasi renyah krispi." },
-                { "id": "p7", "name": "Meses", "price": 8000, "category": "manis", "badge": "Klasik", "color": "#3d405b", "description": "Coklat meses melimpah rasa klasik juara." },
-                { "id": "p8", "name": "Cappucino Caviar", "price": 8000, "category": "manis", "badge": null, "color": "#a5a58d", "description": "Aroma kopi cappucino dipadu butiran caviar coklat." },
-                { "id": "p9", "name": "Coklat Kacang", "price": 8500, "category": "manis", "badge": null, "color": "#b08968", "description": "Coklat tebal bertabur cincangan kacang sangrai." },
-                { "id": "p10", "name": "Matcha", "price": 8500, "category": "manis", "badge": "Favorit", "color": "#52b788", "description": "Glaze matcha khas Jepang dipadu stik biskuit renyah." },
-                { "id": "p11", "name": "Tiramisu Regal", "price": 8500, "category": "manis", "badge": "Best Seller", "color": "#ddb892", "description": "Krim tiramisu kaya rasa dengan biskuit Regal renyah." },
-                { "id": "p12", "name": "Double Cheese", "price": 8500, "category": "manis", "badge": null, "color": "#ffe5ec", "description": "Keju parut melimpah di atas krim keju spesial." },
-                { "id": "p13", "name": "White Almond", "price": 9000, "category": "manis", "badge": null, "color": "#fefae0", "description": "Coklat putih dengan irisan almond panggang krispi." },
-                { "id": "p14", "name": "Abon", "price": 9000, "category": "gurih", "badge": "Gurih Spesial", "color": "#cb997e", "description": "Abon sapi gurih melimpah di atas olesan mayo lembut." },
-                { "id": "p15", "name": "Pepperoni Mayo Cheese", "price": 9500, "category": "gurih", "badge": "Baru", "color": "#e07a5f", "description": "Sensasi pizza donat dengan papperoni, keju & mayo." }
+                { "id": "p1", "name": "Donat Mini Isi 8", "price": 38000, "category": "paket", "badge": "Terlaris", "color": "#e07a5f", "image": "https://lh3.googleusercontent.com/d/1ObC5NivrXLpupMhBv1RlhkLh43Kwa-yM", "description": "Bebas pilih varian rasa topping favoritmu." },
+                { "id": "p2", "name": "Donat Mini Isi 12", "price": 55000, "category": "paket", "badge": "Hemat", "color": "#d4a373", "image": "https://lh3.googleusercontent.com/d/1sRsioD_o5W2chIUYTYPppbuPUKjH8yZA", "description": "Isi lebih banyak, pas untuk rame-rame." },
+                { "id": "p3", "name": "Strawberry", "price": 7500, "category": "manis", "badge": null, "color": "#e63946", "image": "https://lh3.googleusercontent.com/d/1MLjF6OiI9OV3X2l2KR4wEMIr1XBfDnxu", "description": "Selai strawberry manis segar berlimpah." },
+                { "id": "p4", "name": "Susu Vanilla", "price": 8000, "category": "manis", "badge": null, "color": "#f1faee", "image": "https://lh3.googleusercontent.com/d/1uE_HE1Ol0I2BOhaAHKTN-g8AzQpDXgBi", "description": "Glaze vanilla lembut bertabur susu manis." },
+                { "id": "p5", "name": "Caramel Cheese", "price": 8000, "category": "manis", "badge": "Favorit", "color": "#f4a261", "image": "https://lh3.googleusercontent.com/d/1gEFx3HlF_be4FkmEEpejvcm2ryDIuCpZ", "description": "Perpaduan karamel legit dan gurih keju." },
+                { "id": "p6", "name": "Crunchy", "price": 8000, "category": "manis", "badge": null, "color": "#6b705c", "image": "https://lh3.googleusercontent.com/d/1tC8AP_xVxcZv-MaPy9sxT3es5ccIZ68e", "description": "Topping coklat dengan sensasi renyah krispi." },
+                { "id": "p7", "name": "Meses", "price": 8000, "category": "manis", "badge": "Klasik", "color": "#3d405b", "image": "https://lh3.googleusercontent.com/d/1yVUBO-S44g6LfRNIiWqAN06jKcIS48QD", "description": "Coklat meses melimpah rasa klasik juara." },
+                { "id": "p8", "name": "Cappucino Caviar", "price": 8000, "category": "manis", "badge": null, "color": "#a5a58d", "image": null, "description": "Aroma kopi cappucino dipadu butiran caviar coklat." },
+                { "id": "p9", "name": "Coklat Kacang", "price": 8500, "category": "manis", "badge": null, "color": "#b08968", "image": "https://lh3.googleusercontent.com/d/1UDM1WQ6wW60E-eYV41dKOtJdAHSVcCve", "description": "Coklat tebal bertabur cincangan kacang sangrai." },
+                { "id": "p10", "name": "Matcha", "price": 8500, "category": "manis", "badge": "Favorit", "color": "#52b788", "image": "https://lh3.googleusercontent.com/d/1ehSUe3DkRIY6SfnHF3JNhfVA1NVIInIF", "description": "Glaze matcha khas Jepang dipadu stik biskuit renyah." },
+                { "id": "p11", "name": "Tiramisu Regal", "price": 8500, "category": "manis", "badge": "Best Seller", "color": "#ddb892", "image": null, "description": "Krim tiramisu kaya rasa dengan biskuit Regal renyah." },
+                { "id": "p12", "name": "Double Cheese", "price": 8500, "category": "manis", "badge": null, "color": "#ffe5ec", "image": null, "description": "Keju parut melimpah di atas krim keju spesial." },
+                { "id": "p13", "name": "White Almond", "price": 9000, "category": "manis", "badge": null, "color": "#fefae0", "image": null, "description": "Coklat putih dengan irisan almond panggang krispi." },
+                { "id": "p14", "name": "Abon", "price": 9000, "category": "gurih", "badge": "Gurih Spesial", "color": "#cb997e", "image": null, "description": "Abon sapi gurih melimpah di atas olesan mayo lembut." },
+                { "id": "p15", "name": "Pepperoni Mayo Cheese", "price": 9500, "category": "gurih", "badge": "Baru", "color": "#e07a5f", "image": null, "description": "Sensasi pizza donat dengan pepperoni, keju & mayo." }
             ]
         };
 
         let storeData = DEFAULT_DATA;
         let cart = {}; // { productId: { qty: number, note: string } }
         let currentCategory = 'all';
-        let currentInvoiceCode = '#MD-0000';
+        let currentInvoiceCode = '#AT-0001';
 
         async function initApp() {
             try {
@@ -1158,6 +1141,12 @@
 
         function renderStoreInfo() {
             document.getElementById('brand-name-text').innerText = storeData.store.name;
+            if (storeData.store.subtitle) {
+                document.getElementById('brand-subtitle-text').innerText = storeData.store.subtitle;
+            }
+            if (storeData.store.logo_url) {
+                document.getElementById('brand-logo-img').src = storeData.store.logo_url;
+            }
             document.getElementById('store-tagline').innerText = storeData.store.tagline;
             document.getElementById('store-address').innerText = storeData.store.address;
             document.getElementById('store-ig').innerText = storeData.store.instagram;
@@ -1196,7 +1185,11 @@
                 return `
                     <div class="product-card">
                         <div class="product-thumb">
-                            <div class="product-donut-icon" style="background-color: ${product.color || '#C85A17'};"></div>
+                            ${product.image ? `
+                                <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'product-donut-icon\\' style=\\'background-color: ${product.color || '#C85A17'};\\'></div>';" />
+                            ` : `
+                                <div class="product-donut-icon" style="background-color: ${product.color || '#C85A17'};"></div>
+                            `}
                         </div>
                         <div class="product-details">
                             ${product.badge ? `<span class="badge-tag">${product.badge}</span>` : ''}
@@ -1273,8 +1266,17 @@
             }
         }
 
+        function lockBodyScroll() {
+            document.body.classList.add('modal-open');
+        }
+
+        function unlockBodyScroll() {
+            document.body.classList.remove('modal-open');
+        }
+
         function openCartModal() {
             renderCartSheetItems();
+            lockBodyScroll();
             document.getElementById('modal-overlay').classList.add('active');
             document.getElementById('cart-sheet').classList.add('active');
         }
@@ -1297,7 +1299,7 @@
                             <h4>${product.name}</h4>
                             <p>${formatRupiah(product.price)} x ${item.qty} = <strong>${formatRupiah(product.price * item.qty)}</strong></p>
                             <span class="cart-item-note-label">📝 Catatan Produk (Opsional):</span>
-                            <input type="text" class="cart-item-note-input" placeholder="Misal: Varian rasa Matcha 2, Meses 4..." 
+                            <input type="text" class="cart-item-note-input" placeholder="" 
                                 value="${item.note || ''}" 
                                 oninput="updateItemNote('${id}', this.value)">
                         </div>
@@ -1314,7 +1316,7 @@
         function toggleAddressField() {
             const type = document.getElementById('order-type').value;
             const addressGroup = document.getElementById('address-group');
-            if (type === 'Delivery / Kurir') {
+            if (type === 'TA') {
                 addressGroup.style.display = 'block';
             } else {
                 addressGroup.style.display = 'none';
@@ -1322,6 +1324,7 @@
         }
 
         function closeAllModals() {
+            unlockBodyScroll();
             document.getElementById('modal-overlay').classList.remove('active');
             document.getElementById('cart-sheet').classList.remove('active');
             document.getElementById('invoice-sheet').classList.remove('active');
@@ -1340,17 +1343,22 @@
                 return;
             }
 
-            const orderType = document.getElementById('order-type').value;
+            const orderTypeVal = document.getElementById('order-type').value; // "AT" or "TA"
+            const orderTypeLabel = orderTypeVal === 'AT' ? 'Ambil di Toko (AT)' : 'Takeaway / Delivery (TA)';
             const address = document.getElementById('customer-address').value.trim();
             const globalNotes = document.getElementById('order-notes').value.trim();
 
-            if (orderType === 'Delivery / Kurir' && !address) {
+            if (orderTypeVal === 'TA' && !address) {
                 showToast('Harap isi Alamat Pengiriman!');
                 document.getElementById('customer-address').focus();
                 return;
             }
 
-            currentInvoiceCode = '#MD-' + Math.floor(1000 + Math.random() * 9000);
+            // Get or initialize sequential counter from localStorage
+            let currentNum = parseInt(localStorage.getItem('inds_order_counter') || '1', 10);
+            const paddedNum = String(currentNum).padStart(4, '0');
+            currentInvoiceCode = `#${orderTypeVal}-${paddedNum}`;
+
             const now = new Date();
             const dateStr = now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
 
@@ -1382,46 +1390,29 @@
 
             document.getElementById('invoice-customer-summary').innerHTML = `
                 <div><strong>Nama:</strong> ${name}</div>
-                <div><strong>Metode:</strong> ${orderType}</div>
+                <div><strong>Metode:</strong> ${orderTypeLabel}</div>
                 ${address ? `<div><strong>Alamat:</strong> ${address}</div>` : ''}
                 ${globalNotes ? `<div><strong>Catatan Umum:</strong> ${globalNotes}</div>` : ''}
             `;
 
             document.getElementById('cart-sheet').classList.remove('active');
             document.getElementById('invoice-sheet').classList.add('active');
+            lockBodyScroll();
         }
 
-        async function sendToWhatsApp() {
+        function sendToWhatsApp() {
             const name = document.getElementById('customer-name').value.trim();
-            const orderType = document.getElementById('order-type').value;
+            const orderTypeVal = document.getElementById('order-type').value;
+            const orderTypeLabel = orderTypeVal === 'AT' ? 'Ambil di Toko (AT)' : 'Takeaway / Delivery (TA)';
             const address = document.getElementById('customer-address').value.trim();
             const globalNotes = document.getElementById('order-notes').value.trim();
 
-            // 1. Automate Invoice Image Download using html2canvas
-            const receiptEl = document.getElementById('receipt-card-element');
-            if (receiptEl && typeof html2canvas !== 'undefined') {
-                try {
-                    showToast('Mengunduh Invoice Gambar...');
-                    const canvas = await html2canvas(receiptEl, {
-                        scale: 2,
-                        useCORS: true,
-                        backgroundColor: getComputedStyle(document.body).getPropertyValue('--receipt-bg').trim() || '#FFFDF9'
-                    });
-                    
-                    const imgData = canvas.toDataURL('image/png');
-                    const downloadLink = document.createElement('a');
-                    downloadLink.download = `Invoice-${currentInvoiceCode.replace('#', '')}.png`;
-                    downloadLink.href = imgData;
-                    document.body.appendChild(downloadLink);
-                    downloadLink.click();
-                    document.body.removeChild(downloadLink);
-                } catch (err) {
-                    console.error('Download invoice error:', err);
-                }
-            }
+            // Increment sequential order counter for next order
+            let currentNum = parseInt(localStorage.getItem('inds_order_counter') || '1', 10);
+            localStorage.setItem('inds_order_counter', currentNum + 1);
 
-            // 2. Format WhatsApp Message & Navigate
-            let message = `*HALO MY DONUTS, SAYA MAU PESAN*\n`;
+            let message = `*HALO INDS.DOUGH, SAYA MAU PESAN*\n`;
+            message += `*No. Invoice:* ${currentInvoiceCode}\n`;
             message += `-----------------------------------------\n`;
 
             let grandTotal = 0;
@@ -1443,23 +1434,21 @@
 
             message += `*DETAIL PEMESAN:*\n`;
             message += `👤 *Nama:* ${name}\n`;
-            message += `📦 *Metode:* ${orderType}\n`;
-            if (address && orderType === 'Delivery / Kurir') {
+            message += `📦 *Metode:* ${orderTypeLabel}\n`;
+            if (address && orderTypeVal === 'TA') {
                 message += `📍 *Alamat:* ${address}\n`;
             }
             if (globalNotes) {
                 message += `📝 *Catatan Umum:* ${globalNotes}\n`;
             }
 
-            message += `\n_(Invoice gambar telah terunduh di perangkat saya. Terima kasih!)_`;
+            message += `\n_Terima kasih!_`;
 
             const encodedMessage = encodeURIComponent(message);
             const waPhone = storeData.store.whatsapp_raw || '6285640366256';
             const waUrl = `https://wa.me/${waPhone}?text=${encodedMessage}`;
 
-            setTimeout(() => {
-                window.open(waUrl, '_blank');
-            }, 600);
+            window.open(waUrl, '_blank');
         }
 
         function showToast(msg) {
