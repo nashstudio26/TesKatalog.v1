@@ -1,0 +1,166 @@
+{
+  "store": {
+    "name": "My Donuts",
+    "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
+    "phone": "085640366256",
+    "whatsapp_raw": "6285640366256",
+    "address": "Jl. Basuki Rahmat (depan POM bensin Pasar Sabtuan)",
+    "instagram": "@inds.dough",
+    "instagram_url": "https://instagram.com/inds.dough"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "name": "Semua Menu"
+    },
+    {
+      "id": "paket",
+      "name": "📦 Paket Mini"
+    },
+    {
+      "id": "manis",
+      "name": "🍩 Donat Manis"
+    },
+    {
+      "id": "gurih",
+      "name": "🧀 Donat Gurih"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Donat Mini Isi 6",
+      "price": 28000,
+      "category": "paket",
+      "badge": "Terlaris",
+      "color": "#e07a5f",
+      "description": "Bebas pilih varian rasa topping favoritmu."
+    },
+    {
+      "id": "p2",
+      "name": "Donat Mini Isi 12",
+      "price": 55000,
+      "category": "paket",
+      "badge": "Hemat",
+      "color": "#d4a373",
+      "description": "Isi lebih banyak, pas untuk rame-rame."
+    },
+    {
+      "id": "p3",
+      "name": "Strawberry",
+      "price": 7500,
+      "category": "manis",
+      "badge": null,
+      "color": "#e63946",
+      "description": "Selai strawberry manis segar berlimpah."
+    },
+    {
+      "id": "p4",
+      "name": "Susu Vanilla",
+      "price": 8000,
+      "category": "manis",
+      "badge": null,
+      "color": "#f1faee",
+      "description": "Glaze vanilla lembut bertabur susu manis."
+    },
+    {
+      "id": "p5",
+      "name": "Caramel Cheese",
+      "price": 8000,
+      "category": "manis",
+      "badge": "Favorit",
+      "color": "#f4a261",
+      "description": "Perpaduan karamel legit dan gurih keju."
+    },
+    {
+      "id": "p6",
+      "name": "Crunchy",
+      "price": 8000,
+      "category": "manis",
+      "badge": null,
+      "color": "#6b705c",
+      "description": "Topping coklat dengan sensasi renyah krispi."
+    },
+    {
+      "id": "p7",
+      "name": "Meses",
+      "price": 8000,
+      "category": "manis",
+      "badge": "Klasik",
+      "color": "#3d405b",
+      "description": "Coklat meses melimpah rasa klasik juara."
+    },
+    {
+      "id": "p8",
+      "name": "Cappucino Caviar",
+      "price": 8000,
+      "category": "manis",
+      "badge": null,
+      "color": "#a5a58d",
+      "description": "Aroma kopo cappucino dipadu butiran caviar coklat."
+    },
+    {
+      "id": "p9",
+      "name": "Coklat Kacang",
+      "price": 8500,
+      "category": "manis",
+      "badge": null,
+      "color": "#b08968",
+      "description": "Coklat tebal bertabur cincangan kacang sangrai."
+    },
+    {
+      "id": "p10",
+      "name": "Matcha",
+      "price": 8500,
+      "category": "manis",
+      "badge": "Favorit",
+      "color": "#52b788",
+      "description": "Glaze matcha khas Jepang dipadu stik biskuit renyah."
+    },
+    {
+      "id": "p11",
+      "name": "Tiramisu Regal",
+      "price": 8500,
+      "category": "manis",
+      "badge": "Best Seller",
+      "color": "#ddb892",
+      "description": "Krim tiramisu kaya rasa dengan biskuit Regal renyah."
+    },
+    {
+      "id": "p12",
+      "name": "Double Cheese",
+      "price": 8500,
+      "category": "manis",
+      "badge": null,
+      "color": "#ffe5ec",
+      "description": "Keju parut melimpah di atas krim keju spesial."
+    },
+    {
+      "id": "p13",
+      "name": "White Almond",
+      "price": 9000,
+      "category": "manis",
+      "badge": null,
+      "color": "#fefae0",
+      "description": "Coklat putih dengan irisan almond panggang krispi."
+    },
+    {
+      "id": "p14",
+      "name": "Abon",
+      "price": 9000,
+      "category": "gurih",
+      "badge": "Gurih Spesial",
+      "color": "#cb997e",
+      "description": "Abon sapi gurih melimpah di atas olesan mayo lembut."
+    },
+    {
+      "id": "p15",
+      "name": "Pepperoni Mayo Cheese",
+      "price": 9500,
+      "category": "gurih",
+      "badge": "Baru",
+      "color": "#e07a5f",
+      "description": "Sensasi pizza donat dengan papperoni, keju & mayo."
+    }
+  ]
+}
