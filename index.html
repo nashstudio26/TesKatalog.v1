@@ -76,9 +76,12 @@
             text-rendering: optimizeSpeed;
         }
 
-        /* Class for locking background scroll when modal is open */
+        /* Strict Background Scroll Lock when Modal is Open */
         body.modal-open {
             overflow: hidden !important;
+            height: 100vh !important;
+            position: fixed !important;
+            width: 100% !important;
             touch-action: none !important;
         }
 
@@ -143,7 +146,7 @@
             gap: 8px;
         }
 
-        .cart-nav-btn {
+        .cart-nav-btn, .about-btn, .theme-btn {
             position: relative;
             width: 38px;
             height: 38px;
@@ -158,7 +161,7 @@
             transition: var(--transition-fast);
         }
 
-        .cart-nav-btn:active {
+        .cart-nav-btn:active, .about-btn:active, .theme-btn:active {
             transform: scale(0.92);
         }
 
@@ -178,24 +181,6 @@
             justify-content: center;
             padding: 0 4px;
             border: 2px solid var(--bg-main);
-        }
-
-        .theme-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: var(--radius-pill);
-            border: 1px solid var(--border-color);
-            background: var(--bg-surface);
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .theme-btn:active {
-            transform: scale(0.92);
         }
 
         .hero-banner {
@@ -552,12 +537,13 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(4px);
             z-index: 100;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
+            touch-action: none;
         }
 
         .modal-overlay.active {
@@ -583,6 +569,7 @@
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .bottom-sheet.active {
@@ -706,7 +693,7 @@
             transition: var(--transition-fast);
         }
 
-        .form-input:focus, .form-textarea:focus {
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
             border-color: var(--accent-color);
         }
 
@@ -775,6 +762,7 @@
             font-size: 11px;
             color: var(--text-muted);
             margin-top: 2px;
+            font-weight: 600;
         }
 
         .receipt-table {
@@ -869,6 +857,157 @@
             padding: 6px;
         }
 
+        /* ABOUT / CARA PEMESANAN CAROUSEL MODAL */
+        .guide-modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.92);
+            width: calc(100% - 32px);
+            max-width: 420px;
+            max-height: 90vh;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            z-index: 102;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .guide-modal-content.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 14px;
+        }
+
+        .guide-step-counter {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-color);
+            background: var(--accent-soft);
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+        }
+
+        .guide-card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        .guide-img-box {
+            width: 100%;
+            height: 230px;
+            background: var(--bg-surface-elevated);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: var(--bg-surface-elevated);
+        }
+
+        .guide-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .guide-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.45;
+            padding: 0 8px;
+        }
+
+        .guide-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 14px;
+            margin-top: 10px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .btn-guide-nav {
+            padding: 10px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            background: var(--bg-surface-elevated);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-guide-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-guide-nav.primary {
+            background: var(--accent-color);
+            color: #FFFFFF;
+            border-color: var(--accent-color);
+            box-shadow: 0 3px 10px var(--accent-soft);
+        }
+
+        .guide-dots {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .guide-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: var(--transition-fast);
+        }
+
+        .guide-dot.active {
+            width: 14px;
+            border-radius: 3px;
+            background: var(--accent-color);
+        }
+
         .toast-msg {
             position: fixed;
             top: 20px;
@@ -906,6 +1045,9 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span class="cart-badge-dot" id="header-cart-count">0</span>
                 </button>
+                <button class="about-btn" onclick="openGuideModal()" aria-label="Cara Pemesanan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </button>
                 <button class="theme-btn" id="theme-toggle" aria-label="Toggle Theme">
                     <svg id="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     <svg id="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -942,7 +1084,7 @@
             </div>
 
             <div class="product-grid" id="product-grid-container">
-                <!-- Dynamic Product Grid Cards loaded via JS -->
+                <!-- Dynamic Product Grid Cards -->
             </div>
         </main>
 
@@ -982,19 +1124,19 @@
             <div class="form-group">
                 <label class="form-label" for="order-type">Metode Pemesanan</label>
                 <select id="order-type" class="form-select" onchange="toggleAddressField()">
-                    <option value="AT">Ambil di Toko (AT)</option>
-                    <option value="TA">Takeaway / Delivery (TA)</option>
+                    <option value="Ambil di Toko">Ambil di Toko</option>
+                    <option value="Delivery">Delivery</option>
                 </select>
             </div>
 
             <div class="form-group" id="address-group" style="display: none;">
                 <label class="form-label" for="customer-address">Alamat Pengiriman</label>
-                <textarea id="customer-address" class="form-textarea" rows="2" placeholder="Tuliskan alamat lengkap pengiriman..."></textarea>
+                <textarea id="customer-address" class="form-textarea" rows="2" placeholder="Tuliskan alamat lengkap pengiriman... (Note: ada biaya tambahan disesuaikan jarak)"></textarea>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="order-notes">Catatan Umum / Instruksi (Opsional)</label>
-                <input type="text" id="order-notes" class="form-input" placeholder="Contoh: Kirim jam 2 siang / sertakan kartu ucapan">
+                <input type="text" id="order-notes" class="form-input" placeholder="Contoh: Kirim jam 2 siang">
             </div>
 
             <button class="btn-primary-action" onclick="generateInvoiceModal()">
@@ -1014,7 +1156,7 @@
             <div class="receipt-card" id="receipt-card-element">
                 <div class="receipt-header">
                     <div class="receipt-logo-title">INDS.DOUGH</div>
-                    <div class="receipt-meta" id="invoice-id-time">#AT-0001 • 16/09/2026</div>
+                    <div class="receipt-meta" id="invoice-id-time">INV-190926-X8K1 • 19/09/2026</div>
                 </div>
 
                 <table class="receipt-table">
@@ -1048,18 +1190,47 @@
             <button class="btn-secondary-link" onclick="closeInvoiceModal()">Kembali Edit Pesanan</button>
         </div>
 
+        <!-- GUIDE / CARA PEMESANAN MODAL CAROUSEL -->
+        <div class="guide-modal-content" id="guide-modal">
+            <div class="guide-header">
+                <h3 class="sheet-title" style="font-size:15px;">Cara Pemesanan</h3>
+                <span class="guide-step-counter" id="guide-step-badge">Langkah 1 dari 11</span>
+                <button class="close-sheet-btn" onclick="closeAllModals()">✕</button>
+            </div>
+
+            <div class="guide-card-body">
+                <div class="guide-img-box">
+                    <img id="guide-img" src="" alt="Langkah Panduan" />
+                </div>
+                <h4 class="guide-title" id="guide-title">Judul Langkah</h4>
+                <p class="guide-desc" id="guide-desc">Deskripsi petunjuk pemesanan...</p>
+            </div>
+
+            <div class="guide-nav-bar">
+                <button class="btn-guide-nav" id="guide-prev-btn" onclick="navigateGuide(-1)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <div class="guide-dots" id="guide-dots-container"></div>
+                <button class="btn-guide-nav primary" id="guide-next-btn" onclick="navigateGuide(1)">
+                    <span>Selanjutnya</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
         <div class="toast-msg" id="toast-msg">Catatan diperbarui</div>
     </div>
 
     <script>
-        // Embedded Fallback Data
+        // Fallback Default Store & Guide Data
         const DEFAULT_DATA = {
             "store": {
                 "name": "INDS.DOUGH",
                 "subtitle": "Premium Donuts",
                 "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
-                "phone": "085640366256",
-                "whatsapp_raw": "6285640366256",
+                "phone": "0821-3280-9509",
+                "whatsapp_raw": "6282132809509",
                 "address": "Jl. Basuki Rahmat (depan POM bensin Pasar Sabtuan)",
                 "instagram": "@inds.dough",
                 "instagram_url": "https://instagram.com/inds.dough",
@@ -1087,13 +1258,27 @@
                 { "id": "p13", "name": "White Almond", "price": 9000, "category": "manis", "badge": null, "color": "#fefae0", "image": null, "description": "Coklat putih dengan irisan almond panggang krispi." },
                 { "id": "p14", "name": "Abon", "price": 9000, "category": "gurih", "badge": "Gurih Spesial", "color": "#cb997e", "image": null, "description": "Abon sapi gurih melimpah di atas olesan mayo lembut." },
                 { "id": "p15", "name": "Pepperoni Mayo Cheese", "price": 9500, "category": "gurih", "badge": "Baru", "color": "#e07a5f", "image": null, "description": "Sensasi pizza donat dengan pepperoni, keju & mayo." }
+            ],
+            "guide_steps": [
+                { "step": 1, "title": "Pilih Donat Favoritmu", "description": "Tambahkan menu donat yang ingin kamu pesan ke dalam keranjang.", "image": "https://lh3.googleusercontent.com/d/13xr6J0LOqtCkAP3NdXywTKijqgJfQyFz" },
+                { "step": 2, "title": "Buka Keranjang Belanja", "description": "Klik tombol 'Lihat Pesanan' untuk memeriksa daftar belanjaanmu.", "image": "https://lh3.googleusercontent.com/d/1lNKMaLSz1SK91tzFexM2p7HvQnvf7a4F" },
+                { "step": 3, "title": "Cek & Beri Catatan Varian", "description": "Kamu bisa cek kembali pesanan dan memberi catatan khusus pada tiap produk.", "image": "https://lh3.googleusercontent.com/d/13IoC3xmzvBPldNdW5NYSBppuZGzaeeBq" },
+                { "step": 4, "title": "Isi Nama Pemesan", "description": "Tulis nama kamu agar kami tahu siapa penerima pesanan ini.", "image": "https://lh3.googleusercontent.com/d/1Z8DPfJX_6iiFWL0GIfcMbWDyOVH6dlYS" },
+                { "step": 5, "title": "Pilih Metode Pemesanan", "description": "Pilih metode pemesanan (bisa Ambil di Toko atau Delivery).", "image": "https://lh3.googleusercontent.com/d/1J6d_EInUBcfBUY80zFsSS4H4myneNIwt" },
+                { "step": 6, "title": "Isi Alamat Pengiriman", "description": "Kalau kamu memilih Delivery, masukkan alamat kamu (biaya ongkir menyesuaikan jarak).", "image": "https://lh3.googleusercontent.com/d/14XgAYyXKBe6tPZtZ38jsOa0xO5EC5fHq" },
+                { "step": 7, "title": "Tambahkan Catatan Umum", "description": "Kamu juga bisa menambahkan catatan khusus untuk keseluruhan pesananmu.", "image": "https://lh3.googleusercontent.com/d/1knQvw4fBP9D32XEwn4nCwbQcnCoNiEUX" },
+                { "step": 8, "title": "Pratinjau Invoice", "description": "Klik 'Pratinjau Invoice' untuk memeriksa kembali rincian dan total harga.", "image": "https://lh3.googleusercontent.com/d/1Io3faYbK-CYndj-688-tK63MFj0lHpAL" },
+                { "step": 9, "title": "Kirim via WhatsApp", "description": "Klik 'Pesan Sekarang via WhatsApp' untuk langsung terhubung ke admin kami.", "image": "https://lh3.googleusercontent.com/d/1_UOSiC_z-5wjAI-WW9f_NUCcmrdiUSMa" },
+                { "step": 10, "title": "Tekan Tombol Kirim", "description": "Klik icon kirim pesan pada aplikasi WhatsApp kamu.", "image": "https://lh3.googleusercontent.com/d/1Gz2EmaVomnUnZqqmOkB8JbWD8AewNSHe" },
+                { "step": 11, "title": "Konfirmasi Pesanan", "description": "Tunggu karyawan kami mengkonfirmasi pesanan dan memproses donat lezatmu!", "image": "https://lh3.googleusercontent.com/d/18CzNx6XBCw1d6C7OAtuwtdKFqcufLy0A" }
             ]
         };
 
         let storeData = DEFAULT_DATA;
         let cart = {}; // { productId: { qty: number, note: string } }
         let currentCategory = 'all';
-        let currentInvoiceCode = '#AT-0001';
+        let currentInvoiceCode = '';
+        let currentGuideIndex = 0;
 
         async function initApp() {
             try {
@@ -1298,8 +1483,8 @@
                         <div class="cart-item-info" style="flex:1;">
                             <h4>${product.name}</h4>
                             <p>${formatRupiah(product.price)} x ${item.qty} = <strong>${formatRupiah(product.price * item.qty)}</strong></p>
-                            <span class="cart-item-note-label">📝 Catatan Produk (Opsional):</span>
-                            <input type="text" class="cart-item-note-input" placeholder="" 
+                            <span class="cart-item-note-label">📝 Catatan Topping (Opsional):</span>
+                            <input type="text" class="cart-item-note-input" placeholder="Contoh: topping keju dipisah" 
                                 value="${item.note || ''}" 
                                 oninput="updateItemNote('${id}', this.value)">
                         </div>
@@ -1316,7 +1501,7 @@
         function toggleAddressField() {
             const type = document.getElementById('order-type').value;
             const addressGroup = document.getElementById('address-group');
-            if (type === 'TA') {
+            if (type === 'Delivery') {
                 addressGroup.style.display = 'block';
             } else {
                 addressGroup.style.display = 'none';
@@ -1328,11 +1513,21 @@
             document.getElementById('modal-overlay').classList.remove('active');
             document.getElementById('cart-sheet').classList.remove('active');
             document.getElementById('invoice-sheet').classList.remove('active');
+            document.getElementById('guide-modal').classList.remove('active');
         }
 
         function closeInvoiceModal() {
             document.getElementById('invoice-sheet').classList.remove('active');
             document.getElementById('cart-sheet').classList.add('active');
+        }
+
+        function generateUniqueCode() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let result = '';
+            for (let i = 0; i < 4; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
         }
 
         function generateInvoiceModal() {
@@ -1343,23 +1538,25 @@
                 return;
             }
 
-            const orderTypeVal = document.getElementById('order-type').value; // "AT" or "TA"
-            const orderTypeLabel = orderTypeVal === 'AT' ? 'Ambil di Toko (AT)' : 'Takeaway / Delivery (TA)';
+            const orderTypeVal = document.getElementById('order-type').value; // "Ambil di Toko" or "Delivery"
             const address = document.getElementById('customer-address').value.trim();
             const globalNotes = document.getElementById('order-notes').value.trim();
 
-            if (orderTypeVal === 'TA' && !address) {
+            if (orderTypeVal === 'Delivery' && !address) {
                 showToast('Harap isi Alamat Pengiriman!');
                 document.getElementById('customer-address').focus();
                 return;
             }
 
-            // Get or initialize sequential counter from localStorage
-            let currentNum = parseInt(localStorage.getItem('inds_order_counter') || '1', 10);
-            const paddedNum = String(currentNum).padStart(4, '0');
-            currentInvoiceCode = `#${orderTypeVal}-${paddedNum}`;
-
+            // Generate Invoice Code based on order date + unique random code (no sequential counter)
             const now = new Date();
+            const year = now.getFullYear().toString().substr(-2);
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const dateCode = `${day}${month}${year}`;
+            const uniqueCode = generateUniqueCode();
+            currentInvoiceCode = `INV-${dateCode}-${uniqueCode}`;
+
             const dateStr = now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
 
             document.getElementById('invoice-id-time').innerText = `${currentInvoiceCode} • ${dateStr}`;
@@ -1390,8 +1587,8 @@
 
             document.getElementById('invoice-customer-summary').innerHTML = `
                 <div><strong>Nama:</strong> ${name}</div>
-                <div><strong>Metode:</strong> ${orderTypeLabel}</div>
-                ${address ? `<div><strong>Alamat:</strong> ${address}</div>` : ''}
+                <div><strong>Metode:</strong> ${orderTypeVal}</div>
+                ${address && orderTypeVal === 'Delivery' ? `<div><strong>Alamat:</strong> ${address}</div>` : ''}
                 ${globalNotes ? `<div><strong>Catatan Umum:</strong> ${globalNotes}</div>` : ''}
             `;
 
@@ -1403,13 +1600,8 @@
         function sendToWhatsApp() {
             const name = document.getElementById('customer-name').value.trim();
             const orderTypeVal = document.getElementById('order-type').value;
-            const orderTypeLabel = orderTypeVal === 'AT' ? 'Ambil di Toko (AT)' : 'Takeaway / Delivery (TA)';
             const address = document.getElementById('customer-address').value.trim();
             const globalNotes = document.getElementById('order-notes').value.trim();
-
-            // Increment sequential order counter for next order
-            let currentNum = parseInt(localStorage.getItem('inds_order_counter') || '1', 10);
-            localStorage.setItem('inds_order_counter', currentNum + 1);
 
             let message = `*HALO INDS.DOUGH, SAYA MAU PESAN*\n`;
             message += `*No. Invoice:* ${currentInvoiceCode}\n`;
@@ -1434,8 +1626,8 @@
 
             message += `*DETAIL PEMESAN:*\n`;
             message += `👤 *Nama:* ${name}\n`;
-            message += `📦 *Metode:* ${orderTypeLabel}\n`;
-            if (address && orderTypeVal === 'TA') {
+            message += `📦 *Metode:* ${orderTypeVal}\n`;
+            if (address && orderTypeVal === 'Delivery') {
                 message += `📍 *Alamat:* ${address}\n`;
             }
             if (globalNotes) {
@@ -1445,10 +1637,68 @@
             message += `\n_Terima kasih!_`;
 
             const encodedMessage = encodeURIComponent(message);
-            const waPhone = storeData.store.whatsapp_raw || '6285640366256';
+            const waPhone = storeData.store.whatsapp_raw || '6282132809509';
             const waUrl = `https://wa.me/${waPhone}?text=${encodedMessage}`;
 
             window.open(waUrl, '_blank');
+        }
+
+        /* CAROUSEL GUIDE MODAL LOGIC */
+        function openGuideModal() {
+            currentGuideIndex = 0;
+            renderGuideStep();
+            lockBodyScroll();
+            document.getElementById('modal-overlay').classList.add('active');
+            document.getElementById('guide-modal').classList.add('active');
+        }
+
+        function renderGuideStep() {
+            const steps = storeData.guide_steps || DEFAULT_DATA.guide_steps;
+            const total = steps.length;
+            const stepData = steps[currentGuideIndex];
+
+            document.getElementById('guide-step-badge').innerText = `Langkah ${currentGuideIndex + 1} dari ${total}`;
+            document.getElementById('guide-title').innerText = stepData.title;
+            document.getElementById('guide-desc').innerText = stepData.description;
+            
+            const imgElem = document.getElementById('guide-img');
+            imgElem.src = stepData.image;
+            imgElem.alt = stepData.title;
+
+            // Nav buttons state
+            document.getElementById('guide-prev-btn').disabled = (currentGuideIndex === 0);
+            
+            const nextBtn = document.getElementById('guide-next-btn');
+            if (currentGuideIndex === total - 1) {
+                nextBtn.innerHTML = `<span>Selesai</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+            } else {
+                nextBtn.innerHTML = `<span>Selanjutnya</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+            }
+
+            // Dots
+            const dotsContainer = document.getElementById('guide-dots-container');
+            dotsContainer.innerHTML = steps.map((_, i) => `
+                <div class="guide-dot ${i === currentGuideIndex ? 'active' : ''}"></div>
+            `).join('');
+        }
+
+        function navigateGuide(direction) {
+            const steps = storeData.guide_steps || DEFAULT_DATA.guide_steps;
+            const total = steps.length;
+
+            currentGuideIndex += direction;
+
+            if (currentGuideIndex >= total) {
+                closeAllModals();
+                currentGuideIndex = 0;
+                return;
+            }
+
+            if (currentGuideIndex < 0) {
+                currentGuideIndex = 0;
+            }
+
+            renderGuideStep();
         }
 
         function showToast(msg) {
