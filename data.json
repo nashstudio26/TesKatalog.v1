@@ -3,8 +3,8 @@
     "name": "INDS.DOUGH",
     "subtitle": "Premium Donuts",
     "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
-    "phone": "085640366256",
-    "whatsapp_raw": "6285640366256",
+    "phone": "0821-3280-9509",
+    "whatsapp_raw": "6282132809509",
     "address": "Jl. Basuki Rahmat (depan POM bensin Pasar Sabtuan)",
     "instagram": "@inds.dough",
     "instagram_url": "https://instagram.com/inds.dough",
@@ -178,6 +178,74 @@
       "color": "#e07a5f",
       "image": null,
       "description": "Sensasi pizza donat dengan pepperoni, keju & mayo."
+    }
+  ],
+  "guide_steps": [
+    {
+      "step": 1,
+      "title": "Pilih Donat Favoritmu",
+      "description": "Tambahkan menu donat yang ingin kamu pesan ke dalam keranjang.",
+      "image": "https://lh3.googleusercontent.com/d/13xr6J0LOqtCkAP3NdXywTKijqgJfQyFz"
+    },
+    {
+      "step": 2,
+      "title": "Buka Keranjang Belanja",
+      "description": "Klik tombol 'Lihat Pesanan' untuk memeriksa daftar belanjaanmu.",
+      "image": "https://lh3.googleusercontent.com/d/1lNKMaLSz1SK91tzFexM2p7HvQnvf7a4F"
+    },
+    {
+      "step": 3,
+      "title": "Cek & Beri Catatan Varian",
+      "description": "Kamu bisa cek kembali pesanan dan memberi catatan khusus pada tiap produk.",
+      "image": "https://lh3.googleusercontent.com/d/13IoC3xmzvBPldNdW5NYSBppuZGzaeeBq"
+    },
+    {
+      "step": 4,
+      "title": "Isi Nama Pemesan",
+      "description": "Tulis nama kamu agar kami tahu siapa penerima pesanan ini.",
+      "image": "https://lh3.googleusercontent.com/d/1Z8DPfJX_6iiFWL0GIfcMbWDyOVH6dlYS"
+    },
+    {
+      "step": 5,
+      "title": "Pilih Metode Pemesanan",
+      "description": "Pilih metode pemesanan (bisa Ambil di Toko atau Delivery).",
+      "image": "https://lh3.googleusercontent.com/d/1J6d_EInUBcfBUY80zFsSS4H4myneNIwt"
+    },
+    {
+      "step": 6,
+      "title": "Isi Alamat Pengiriman",
+      "description": "Kalau kamu memilih Delivery, masukkan alamat kamu (biaya ongkir menyesuaikan jarak).",
+      "image": "https://lh3.googleusercontent.com/d/14XgAYyXKBe6tPZtZ38jsOa0xO5EC5fHq"
+    },
+    {
+      "step": 7,
+      "title": "Tambahkan Catatan Umum",
+      "description": "Kamu juga bisa menambahkan catatan khusus untuk keseluruhan pesananmu.",
+      "image": "https://lh3.googleusercontent.com/d/1knQvw4fBP9D32XEwn4nCwbQcnCoNiEUX"
+    },
+    {
+      "step": 8,
+      "title": "Pratinjau Invoice",
+      "description": "Klik 'Pratinjau Invoice' untuk memeriksa kembali rincian dan total harga.",
+      "image": "https://lh3.googleusercontent.com/d/1Io3faYbK-CYndj-688-tK63MFj0lHpAL"
+    },
+    {
+      "step": 9,
+      "title": "Kirim via WhatsApp",
+      "description": "Klik 'Pesan Sekarang via WhatsApp' untuk langsung terhubung ke admin kami.",
+      "image": "https://lh3.googleusercontent.com/d/1_UOSiC_z-5wjAI-WW9f_NUCcmrdiUSMa"
+    },
+    {
+      "step": 10,
+      "title": "Tekan Tombol Kirim",
+      "description": "Klik icon kirim pesan pada aplikasi WhatsApp kamu.",
+      "image": "https://lh3.googleusercontent.com/d/1Gz2EmaVomnUnZqqmOkB8JbWD8AewNSHe"
+    },
+    {
+      "step": 11,
+      "title": "Konfirmasi Pesanan",
+      "description": "Tunggu karyawan kami mengkonfirmasi pesanan dan memproses donat lezatmu!",
+      "image": "https://lh3.googleusercontent.com/d/18CzNx6XBCw1d6C7OAtuwtdKFqcufLy0A"
     }
   ]
 }
