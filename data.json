@@ -1,12 +1,14 @@
 {
   "store": {
-    "name": "My Donuts",
+    "name": "INDS.DOUGH",
+    "subtitle": "Premium Donuts",
     "tagline": "DONAT PREMIUM, NO BANTET, NO NGARET, NO SERET, NO KOPONG.",
     "phone": "085640366256",
     "whatsapp_raw": "6285640366256",
     "address": "Jl. Basuki Rahmat (depan POM bensin Pasar Sabtuan)",
     "instagram": "@inds.dough",
-    "instagram_url": "https://instagram.com/inds.dough"
+    "instagram_url": "https://instagram.com/inds.dough",
+    "logo_url": "https://lh3.googleusercontent.com/d/18BoQaOrAJZKOPdCPzhF-qKcKfrZO7W3i"
   },
   "categories": [
     {
@@ -29,11 +31,12 @@
   "products": [
     {
       "id": "p1",
-      "name": "Donat Mini Isi 6",
-      "price": 28000,
+      "name": "Donat Mini Isi 8",
+      "price": 38000,
       "category": "paket",
       "badge": "Terlaris",
       "color": "#e07a5f",
+      "image": "https://lh3.googleusercontent.com/d/1ObC5NivrXLpupMhBv1RlhkLh43Kwa-yM",
       "description": "Bebas pilih varian rasa topping favoritmu."
     },
     {
@@ -43,6 +46,7 @@
       "category": "paket",
       "badge": "Hemat",
       "color": "#d4a373",
+      "image": "https://lh3.googleusercontent.com/d/1sRsioD_o5W2chIUYTYPppbuPUKjH8yZA",
       "description": "Isi lebih banyak, pas untuk rame-rame."
     },
     {
@@ -52,6 +56,7 @@
       "category": "manis",
       "badge": null,
       "color": "#e63946",
+      "image": "https://lh3.googleusercontent.com/d/1MLjF6OiI9OV3X2l2KR4wEMIr1XBfDnxu",
       "description": "Selai strawberry manis segar berlimpah."
     },
     {
@@ -61,6 +66,7 @@
       "category": "manis",
       "badge": null,
       "color": "#f1faee",
+      "image": "https://lh3.googleusercontent.com/d/1uE_HE1Ol0I2BOhaAHKTN-g8AzQpDXgBi",
       "description": "Glaze vanilla lembut bertabur susu manis."
     },
     {
@@ -70,6 +76,7 @@
       "category": "manis",
       "badge": "Favorit",
       "color": "#f4a261",
+      "image": "https://lh3.googleusercontent.com/d/1gEFx3HlF_be4FkmEEpejvcm2ryDIuCpZ",
       "description": "Perpaduan karamel legit dan gurih keju."
     },
     {
@@ -79,6 +86,7 @@
       "category": "manis",
       "badge": null,
       "color": "#6b705c",
+      "image": "https://lh3.googleusercontent.com/d/1tC8AP_xVxcZv-MaPy9sxT3es5ccIZ68e",
       "description": "Topping coklat dengan sensasi renyah krispi."
     },
     {
@@ -88,6 +96,7 @@
       "category": "manis",
       "badge": "Klasik",
       "color": "#3d405b",
+      "image": "https://lh3.googleusercontent.com/d/1yVUBO-S44g6LfRNIiWqAN06jKcIS48QD",
       "description": "Coklat meses melimpah rasa klasik juara."
     },
     {
@@ -97,7 +106,8 @@
       "category": "manis",
       "badge": null,
       "color": "#a5a58d",
-      "description": "Aroma kopo cappucino dipadu butiran caviar coklat."
+      "image": null,
+      "description": "Aroma kopi cappucino dipadu butiran caviar coklat."
     },
     {
       "id": "p9",
@@ -106,6 +116,7 @@
       "category": "manis",
       "badge": null,
       "color": "#b08968",
+      "image": "https://lh3.googleusercontent.com/d/1UDM1WQ6wW60E-eYV41dKOtJdAHSVcCve",
       "description": "Coklat tebal bertabur cincangan kacang sangrai."
     },
     {
@@ -115,6 +126,7 @@
       "category": "manis",
       "badge": "Favorit",
       "color": "#52b788",
+      "image": "https://lh3.googleusercontent.com/d/1ehSUe3DkRIY6SfnHF3JNhfVA1NVIInIF",
       "description": "Glaze matcha khas Jepang dipadu stik biskuit renyah."
     },
     {
@@ -124,6 +136,7 @@
       "category": "manis",
       "badge": "Best Seller",
       "color": "#ddb892",
+      "image": null,
       "description": "Krim tiramisu kaya rasa dengan biskuit Regal renyah."
     },
     {
@@ -133,6 +146,7 @@
       "category": "manis",
       "badge": null,
       "color": "#ffe5ec",
+      "image": null,
       "description": "Keju parut melimpah di atas krim keju spesial."
     },
     {
@@ -142,6 +156,7 @@
       "category": "manis",
       "badge": null,
       "color": "#fefae0",
+      "image": null,
       "description": "Coklat putih dengan irisan almond panggang krispi."
     },
     {
@@ -151,6 +166,7 @@
       "category": "gurih",
       "badge": "Gurih Spesial",
       "color": "#cb997e",
+      "image": null,
       "description": "Abon sapi gurih melimpah di atas olesan mayo lembut."
     },
     {
@@ -160,7 +176,8 @@
       "category": "gurih",
       "badge": "Baru",
       "color": "#e07a5f",
-      "description": "Sensasi pizza donat dengan papperoni, keju & mayo."
+      "image": null,
+      "description": "Sensasi pizza donat dengan pepperoni, keju & mayo."
     }
   ]
 }
